@@ -1,0 +1,358 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="PhongTro.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Tìm phòng trọ</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .inner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu ul {
+            display: flex;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+        }
+
+            .menu ul a {
+                padding: 15px 20px;
+                align-items: center;
+                color: green;
+                display: block;
+                text-decoration: none;
+            }
+
+        /*.inner-header .login {
+                text-transform: uppercase;
+                font-weight: bold;
+            }*/
+
+        /*.inner-header .login a {
+                    color: green;
+                }*/
+        .header .logo {
+            width: 50px;
+            height: auto;
+            margin: 5px 0px 0px 20px;
+        }
+
+        .header .main-nav {
+            background-image: url(./img/banner1.png);
+            background-size: cover;
+            background-position: center;
+            min-height: 530px;
+            width: 100%;
+            margin-top: 56px;
+        }
+
+        header {
+            color: green;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            border-bottom: 1px solid green;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btnSearch {
+            position: absolute !important;
+            /*top: 200px !important;*/
+            left: 36% !important;
+            width: 70px !important;
+            padding: 4px 0 !important;
+            text-align: center !important;
+            border-radius: 20px !important;
+            background-color: #084708;
+            transition: background 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+            .btnSearch:hover {
+                background: green;
+            }
+
+            .btnSearch i {
+                color: white;
+                font-size: 17px;
+            }
+
+        .icon-cancel {
+            position: absolute;
+            font-size: 27px;
+            left: 33%;
+            /*top: 6px;*/
+            color: green;
+        }
+
+        .search {
+            display: flex;
+            padding: 20px;
+            width: 40%;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            margin-left: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+            .search .selection select {
+                border: none;
+                border-right: solid 1px black;
+                outline: none;
+            }
+
+            .search .search-input input {
+                width: 85%;
+                border: none;
+                outline: none;
+                padding-right: 120px;
+                /*margin-left: 10px;*/
+            }
+
+        header.sticky {
+            background: green;
+            opacity: 0.9; /*trong suốt*/
+            color: white;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+            header.sticky .menu a {
+                color: white;
+            }
+
+        .content {
+            text-align: center;
+            width: 960px;
+            margin: auto;
+        }
+
+        #backtop {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            background: green;
+            color: #fff;
+            align-items: center;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 40px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu ul.sub-menu {
+            position: absolute;
+            background-color: white;
+            padding: 10px 0px;
+            display: none;
+            text-transform: none;
+            width: 120px;
+            border: 1px solid green;
+            top:55px;
+        }
+
+        .menu li:hover > ul.sub-menu {
+            display: block;
+        }
+
+        .menu ul.sub-menu a {
+            padding: 0px 8px;
+            border-bottom: 1px solid green;
+            left: 0;
+        }
+
+        .menu ul.sub-menu li:hover>a {
+            border-bottom: 1px solid #6ce55e;
+        }
+
+        .menu ul.sub-menu li:last-child>a {
+            border: none;
+        }
+        .menu ul.sub-menu ul.sub-menu{
+            left: 119px;
+            top:-11px;
+            width:130px;
+        }
+        .menu>ul>li>a{
+            position:relative;
+        }
+        .menu>ul>li>a::before{
+            content:"";
+            height:4px;
+            width:0;
+            background:green;
+            position:absolute;
+            bottom:0;
+            left:0;
+            transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+        .menu>ul>li:hover>a::before{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="header">
+                <header>
+                    <div class="inner-header ">
+                        <img class="logo" src="img/logo1.png" />
+                        <a style="font-size: 25px; font-family: 'Segoe Print'; font-weight: bold">Alibaba</a>
+                        <%--<div class="search col-6">
+                            <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+                            <asp:LinkButton class="btn-cancel" ID="LinkButton1" runat="server">
+                            <i class="fa-solid fa-xmark icon-cancel"></i>
+                            </asp:LinkButton>
+                            <asp:LinkButton class="btnSearch" ID="LinkButton2" runat="server">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                            </asp:LinkButton>
+                        </div>--%>
+                        <div class="menu">
+                            <ul>
+                                <li><a href="#">Trang chủ</a></li>
+                                <li><a href="#">Danh mục</a></li>
+                                <li><a href="#">Liên hệ</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="">Phước Hạnh</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="https://www.facebook.com/phuochanh.phanthi.19">Facebook</a></li>
+                                                <li><a href="">Instagram</a></li>
+                                                <li><a href="">Phone number</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="">Khánh Huyền</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="https://www.facebook.com/khanhhuyen.ngotran.1">Facebook</a></li>
+                                                <li><a href="">Instagram</a></li>
+                                                <li><a href="">Phone number</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="">Hồng Minh</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="https://www.facebook.com/profile.php?id=100074792139387">Facebook</a></li>
+                                                <li><a href="">Instagram</a></li>
+                                                <li><a href="">Phone number</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="">Lê Trinh</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="https://www.facebook.com/profile.php?id=100083175412610">Facebook</a></li>
+                                                <li><a href="">Instagram</a></li>
+                                                <li><a href="">Phone number</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="Dangky.aspx"><i class="fa-solid fa-right-to-bracket"></i>Đăng Ký</a></li>
+                                <li><a href="Dangnhap.aspx"><i class="fa-solid fa-user"></i>Đăng Nhập</a></li>
+                            </ul>
+                        </div>
+                        <%--<div class="login">
+                            <a href="Dangky.aspx"><i class="fa-solid fa-right-to-bracket"></i>Đăng Ký</a>
+                            <a href="Dangnhap.aspx"><i class="fa-solid fa-user"></i>Đăng Nhập</a>
+                        </div>--%>
+                    </div>
+                </header>
+                <div id="banner">
+                </div>
+                <div class="main-nav ">
+                    <div class="text">
+                        <h1>Website tìm kiếm phòng trọ miễn phí
+                            <br />
+                            cho người đi thuê </h1>
+                    </div>
+                    <div class="search">
+                        <i class="fa-solid fa-location-dot" style="color: red"></i>
+                        <div class="selection">
+                            <select>
+                                <option>Quận Thanh Khê</option>
+                                <option>Quận Hải Châu</option>
+                                <option>Quận Liên Chiểu</option>
+                                <option>Quận Sơn Trà</option>
+                                <option>Quận Ngũ Hành Sơn</option>
+                                <option>Quận Cẩm Lệ</option>
+                                <option>Huyện Hòa Vang</option>
+                                <option>Huyện Đảo Hoàng Sa</option>
+                            </select>
+                        </div>
+                        <div class="search-input" style="display: flex">
+                            <input type="text" placeholder="Nhập địa điểm" />
+                            <%--<asp:LinkButton class="btn-cancel" ID="LinkButton3" runat="server">
+                            <i class="fa-solid fa-xmark icon-cancel"></i>
+                            </asp:LinkButton>
+                            <asp:LinkButton class="btnSearch" ID="btnSearch" runat="server">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                            </asp:LinkButton>--%>
+                            <button type="button" style="border: none; background-color: transparent;"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil delectus excepturi fugit illum, necessitatibus esse reprehenderit? Corrupti similique, minima, architecto facilis sed obcaecati dignissimos enim, sunt veniam commodi accusamus magni repellat! Eos quos quia laborum accusamus aspernatur possimus magni voluptatibus, voluptatum saepe consequuntur, adipisci laboriosam natus illo veritatis provident nihil deserunt soluta, officia laudantium iure. Voluptas facere nihil quae placeat officia accusantium eum eaque quis aliquam obcaecati, quisquam, dolores asperiores nesciunt, iusto saepe eligendi ducimus provident iste corporis! Nulla dolor facere, libero velit distinctio magni expedita, ratione atque eum cum ad vero fugit beatae dignissimos earum possimus, ipsum tempore consequuntur!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil delectus excepturi fugit illum, necessitatibus esse reprehenderit? Corrupti similique, minima, architecto facilis sed obcaecati dignissimos enim, sunt veniam commodi accusamus magni repellat! Eos quos quia laborum accusamus aspernatur possimus magni voluptatibus, voluptatum saepe consequuntur, adipisci laboriosam natus illo veritatis provident nihil deserunt soluta, officia laudantium iure. Voluptas facere nihil quae placeat officia accusantium eum eaque quis aliquam obcaecati, quisquam, dolores asperiores nesciunt, iusto saepe eligendi ducimus provident iste corporis! Nulla dolor facere, libero velit distinctio magni expedita, ratione atque eum cum ad vero fugit beatae dignissimos earum possimus, ipsum tempore consequuntur!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil delectus excepturi fugit illum, necessitatibus esse reprehenderit? Corrupti similique, minima, architecto facilis sed obcaecati dignissimos enim, sunt veniam commodi accusamus magni repellat! Eos quos quia laborum accusamus aspernatur possimus magni voluptatibus, voluptatum saepe consequuntur, adipisci laboriosam natus illo veritatis provident nihil deserunt soluta, officia laudantium iure. Voluptas facere nihil quae placeat officia accusantium eum eaque quis aliquam obcaecati, quisquam, dolores asperiores nesciunt, iusto saepe eligendi ducimus provident iste corporis! Nulla dolor facere, libero velit distinctio magni expedita, ratione atque eum cum ad vero fugit beatae dignissimos earum possimus, ipsum tempore consequuntur!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil delectus excepturi fugit illum, necessitatibus esse reprehenderit? Corrupti similique, minima, architecto facilis sed obcaecati dignissimos enim, sunt veniam commodi accusamus magni repellat! Eos quos quia laborum accusamus aspernatur possimus magni voluptatibus, voluptatum saepe consequuntur, adipisci laboriosam natus illo veritatis provident nihil deserunt soluta, officia laudantium iure. Voluptas facere nihil quae placeat officia accusantium eum eaque quis aliquam obcaecati, quisquam, dolores asperiores nesciunt, iusto saepe eligendi ducimus provident iste corporis! Nulla dolor facere, libero velit distinctio magni expedita, ratione atque eum cum ad vero fugit beatae dignissimos earum possimus, ipsum tempore consequuntur!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil delectus excepturi fugit illum, necessitatibus esse reprehenderit? Corrupti similique, minima, architecto facilis sed obcaecati dignissimos enim, sunt veniam commodi accusamus magni repellat! Eos quos quia laborum accusamus aspernatur possimus magni voluptatibus, voluptatum saepe consequuntur, adipisci laboriosam natus illo veritatis provident nihil deserunt soluta, officia laudantium iure. Voluptas facere nihil quae placeat officia accusantium eum eaque quis aliquam obcaecati, quisquam, dolores asperiores nesciunt, iusto saepe eligendi ducimus provident iste corporis! Nulla dolor facere, libero velit distinctio magni expedita, ratione atque eum cum ad vero fugit beatae dignissimos earum possimus, ipsum tempore consequuntur!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil delectus excepturi fugit illum, necessitatibus esse reprehenderit? Corrupti similique, minima, architecto facilis sed obcaecati dignissimos enim, sunt veniam commodi accusamus magni repellat! Eos quos quia laborum accusamus aspernatur possimus magni voluptatibus, voluptatum saepe consequuntur, adipisci laboriosam natus illo veritatis provident nihil deserunt soluta, officia laudantium iure. Voluptas facere nihil quae placeat officia accusantium eum eaque quis aliquam obcaecati, quisquam, dolores asperiores nesciunt, iusto saepe eligendi ducimus provident iste corporis! Nulla dolor facere, libero velit distinctio magni expedita, ratione atque eum cum ad vero fugit beatae dignissimos earum possimus, ipsum tempore consequuntur!</p>
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="footer">
+            </div>
+            <div id="backtop">
+                <i class="fa-solid fa-chevron-up"></i>
+            </div>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 0) {
+                    $('header').addClass('sticky');
+                    $('#backtop').fadeIn();
+                } else {
+                    $('header').removeClass('sticky');
+                    $('#backtop').fadeOut();
+                }
+            });
+            $('sub-menu').parent('li').addClass('has-child');
+        });
+        $("#backtop").click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 1000);
+        });
+    </script>
+</body>
+</html>

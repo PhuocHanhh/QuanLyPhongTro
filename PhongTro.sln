@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.34031.82
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhongTro", "PhongTro\PhongTro.csproj", "{FE96D456-58C7-456B-A26B-6BBABDC396B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE96D456-58C7-456B-A26B-6BBABDC396B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE96D456-58C7-456B-A26B-6BBABDC396B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE96D456-58C7-456B-A26B-6BBABDC396B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE96D456-58C7-456B-A26B-6BBABDC396B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80D10BB6-E2D0-40EE-BBCA-BFCD6D9F640E}
+	EndGlobalSection
+EndGlobal

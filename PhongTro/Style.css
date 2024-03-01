@@ -1,0 +1,87 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.header .logo {
+    width: 70px;
+    margin-left: 20px;
+}
+
+.header .main-nav {
+    background-image: url(./img/banner1.png);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+/*.login {
+    float: right;
+    font-size: 20px;
+    margin-right: 40px;
+    margin-top: 20px;
+}
+
+    .login a {
+        margin-right: 30px;
+        text-decoration: none;
+    }*/
+
+.main-nav .menu {
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 200px;
+}
+
+.header .main-nav .text {
+    padding-top: 200px;
+    padding-left: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.menu ul {
+    display: flex;
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+    .menu ul li a {
+        text-decoration: none;
+        color: green;
+        margin-right: 20px;
+    }
+
+        .menu ul li a:hover {
+            color: green;
+        }
+
+
+.search {
+    display: flex;
+    padding: 20px;
+    width: 40%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin-left: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+    .search .selection select {
+        border: none;
+        border-right: solid 1px black;
+        outline: none;
+    }
+
+    .search .search-input input {
+        width: 85%;
+        border: none;
+        outline: none;
+        padding-right: 120px;
+        /*margin-left: 10px;*/
+    }
